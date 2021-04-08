@@ -13,18 +13,18 @@ class Planet(Base):
     # Here we define columns for the table person
     # Notice that each column is also a normal Python instance attribute.
     id = Column(Integer, primary_key=True)
-    name = Column(String(40), nullable=False)
+    name = Column(String(30), nullable=False)
     population = Column(Integer)
-    gravity = Column(String(40))
-    climate = Column(String(50))
-    terrain = Column(String(50))
-    created = Column(String(50))
+    gravity = Column(String(30))
+    climate = Column(String(40))
+    terrain = Column(String(40))
+    created = Column(String(40))
     surface_water = Column(Integer)
     diameter = Column(Integer)
     orbital_period = Column(Integer)
     rotatio_period = Column(Integer)
-    pic = Column(String(500))
-    url =Column(String(500))
+    pic = Column(String(300))
+    url =Column(String(300))
 
 class Person(Base):
     __tablename__ = 'person'
@@ -33,15 +33,15 @@ class Person(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(25), nullable=False)
     birth_year = Column(Date, nullable=False)
-    created = Column(String(50))
-    homeworld = Column(String(50), ForeignKey(Planet.name))
+    created = Column(String(40))
+    homeworld = Column(String(40), ForeignKey(Planet.name))
     eye_color = Column(String(10))
     gender = Column(String(15))
     hair_color = Column(String(20))
     height = Column(Integer)
     mass = Column(Integer)
     skin_color = Column(String(20))
-    pic = Column(String(500))
+    pic = Column(String(400))
     url = Column(String(100))
 
     def to_dict(self):
@@ -51,11 +51,10 @@ class Person(Base):
 
 class User(Base):
     __tablename__ = 'user'
-    # Here we define columns for the table address.
-    # Notice that each column is also a normal Python instance attribute.
+    
     id = Column(Integer, primary_key=True)
-    username = Column(String(40), unique=True, nullable=False)
-    email = Column(String(100), unique=True, nullable=False)
+    username = Column(String(30), unique=True, nullable=False)
+    email = Column(String(90), unique=True, nullable=False)
 
 
     def to_dict(self):
@@ -65,9 +64,9 @@ class Favorites(Base):
     __tablename__ = 'favorites'
     user_id = Column(Integer, ForeignKey(User.id))
     id = Column(Integer, primary_key=True)
-    name = Column(String(50))
-    planet_name = Column(String(40), ForeignKey(Planet.name))
-    person_name = Column(String(25), ForeignKey(Person.name))
+    name = Column(String(40))
+    planet_name = Column(String(30), ForeignKey(Planet.name))
+    person_name = Column(String(20), ForeignKey(Person.name))
 
     def to_dict(self):
         return {}
